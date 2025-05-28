@@ -3,4 +3,5 @@ export interface AuthenticatedUser {
   name: string;
   email: string;
   role: 'ADMIN' | 'USER';
+  document: string;
 }
