@@ -14,6 +14,7 @@ export class UserService {
         email: args.email,
         password: hashedPassword,
         name: args.name,
+        document: args.document,
       },
     });
   }
@@ -31,6 +32,7 @@ export class UserService {
         id: user.id,
         email: user.email,
         name: user.name,
+        document: user.document,
       };
     }
     return null;

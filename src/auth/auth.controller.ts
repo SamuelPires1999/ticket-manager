@@ -2,6 +2,7 @@ import { Controller, Post, Body, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Response } from 'express';
 import { SignInDto } from './dto/sign-in.dto';
+import { SignUpDto } from './dto/sign-up.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -22,6 +23,11 @@ export class AuthController {
       maxAge: 3600000, // 1 hour
     });
     return { message: 'Logged in successfully' };
+  }
+
+  @Post('register')
+  async register(@Body() body: SignUpDto) {
+    return this.authService.signUp(body);
   }
 
   @Post('logout')

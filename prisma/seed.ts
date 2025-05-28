@@ -18,6 +18,7 @@ async function main() {
       email: newUser.email,
       password: hashedPassword,
       name: newUser.name,
+      document: faker.string.alphanumeric(11), // Generate a random document
     },
   });
   console.log('User seeded successfully');

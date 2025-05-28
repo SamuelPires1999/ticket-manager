@@ -24,6 +24,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!user || user.id !== payload.sub) {
       throw new UnauthorizedException('Unauthorized user');
     }
-    return { id: user.id, email: user.email, name: user.name };
+    return { id: user.id, email: user.email, name: user.name, role: user.role };
   }
 }

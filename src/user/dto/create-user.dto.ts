@@ -11,4 +11,8 @@ export class CreateUserDto {
   @IsNotEmpty({ message: 'Name needs to be provided' })
   @IsString({ message: 'Name must be a string' })
   name: string;
+
+  @IsNotEmpty({ message: 'Document needs to be provided' })
+  @IsString({ message: 'Document must be a string' })
+  document: string;
 }
