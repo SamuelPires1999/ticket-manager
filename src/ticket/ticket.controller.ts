@@ -1,13 +1,13 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
-import { TicketService } from './ticket.service';
 import { AssignTicketDto } from './dto/assign-ticket.dto';
 import { AuthenticatedUser } from 'src/auth/authe-user.interface';
 import { User } from 'src/auth/user.decorator';
 import { AuthGuard } from '@nestjs/passport';
+import { AssignTicketUseCase } from './use-cases/assign-ticket.usecase';
 
 @Controller('tickets')
 export class TicketController {
-  constructor(private readonly ticketService: TicketService) {}
+  constructor(private readonly assignTicketUseCase: AssignTicketUseCase) {}
 
   @UseGuards(AuthGuard('jwt'))
   @Post('assign')
@@ -15,6 +15,6 @@ export class TicketController {
     @Body() assignTicketDto: AssignTicketDto,
     @User() user: AuthenticatedUser,
   ) {
-    return this.ticketService.assignTicket(user, assignTicketDto);
+    return this.assignTicketUseCase.execute(user, assignTicketDto);
   }
 }

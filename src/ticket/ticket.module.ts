@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { TicketService } from './ticket.service';
 import { TicketController } from './ticket.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
+import { AssignTicketUseCase } from './use-cases/assign-ticket.usecase';
 
 @Module({
-  providers: [TicketService],
+  providers: [AssignTicketUseCase],
   controllers: [TicketController],
   imports: [PrismaModule],
 })

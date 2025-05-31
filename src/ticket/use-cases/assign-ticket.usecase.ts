@@ -1,13 +1,12 @@
-import { Injectable, UnprocessableEntityException } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { AssignTicketDto } from './dto/assign-ticket.dto';
 import { AuthenticatedUser } from 'src/auth/authe-user.interface';
+import { AssignTicketDto } from '../dto/assign-ticket.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 
 @Injectable()
-export class TicketService {
+export class AssignTicketUseCase {
   constructor(private readonly database: PrismaService) {}
-
-  async assignTicket(user: AuthenticatedUser, input: AssignTicketDto) {
+  async execute(user: AuthenticatedUser, input: AssignTicketDto) {
     const event = await this.database.event.findUnique({
       where: {
         id: input.eventId,
